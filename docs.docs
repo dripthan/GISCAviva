@@ -1,0 +1,89 @@
+
+---------------------------------------------------------------------
+
+uInstructions
+
+clr       0           --> disp
+drw       !           --> disp @ (a,b)
+inp       inp         --> bus
+
+ain       bus         --> a
+bin       bus         --> b
+cin       bus         --> c
+din       bus         --> d
+
+aou       a           --> bus
+bou       b           --> bus
+cou       c           --> bus
+dou       d           --> bus
+
+mai       bus         --> mar
+iri       bus         --> ir
+fgi                   --> flgs
+
+zeo       0           --> bus
+uno       1           --> bus
+
+pci       bus         --> pc
+pco       pc          --> bus
+pce       pc + 1      --> pc
+end       0           --> seq
+
+op3       1000        --> alu
+op2       0100        --> alu
+op1       0010        --> alu
+op0       0001        --> alu
+alo       alu         --> bus
+
+rin       bus         --> ram
+r1o       ram1        --> bus
+r0o       ram0        --> bus
+
+---------------------------------------------------------------------
+
+Instructions
+
+00 nop
+01 hlt    0               --> rom
+
+02 lia    imt             --> a
+03 lib    imt             --> b
+
+04 lda    ram @ adr       --> a
+05 ldb    ram @ adr       --> b
+
+06 sta    a               --> ram @ adr
+07 stb    b               --> ram @ adr
+
+08 lap    ram @ b         --> a
+09 sap    a               --> ram @ b
+
+0a clr    0               --> disp
+0b drw    1               --> disp @ (a,b)
+0c inp    inp             --> a
+
+0d inc    a  + 1          --> a
+0e dec    a  - 1          --> a
+
+0f mic    ram @ adr + 1   --> ram @ adr
+10 mdc    ram @ adr - 1   --> ram @ adr
+
+11 add    a  + b          --> a
+12 sub    a  - b          --> a
+13 mul    a  * b          --> a
+14 div    a  / b          --> a
+15 shl    a << b          --> a
+16 shr    a >> b          --> a
+
+17 not       ! a          --> a
+18 and    a  & b          --> a
+19 or     a  | b          --> a
+1a nnd    a !& b          --> a
+1b nor    a !| b          --> a
+1c xor    a  ^ b          --> a
+1d cmp                    --> flgs
+
+1e jmp    val             --> pc
+1f jeq    val             --> pc if a == b
+
+---------------------------------------------------------------------

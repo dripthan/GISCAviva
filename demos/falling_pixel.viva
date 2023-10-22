@@ -1,0 +1,41 @@
+
+; set x, y, vx, vy variables equal to zero
+lia 0
+sta f0
+sta f1
+sta f2
+sta f3
+
+; set gravity to 1
+lia 1
+sta f4
+
+loop:
+
+  ; fall
+  lda f3
+  ldb f4
+  add
+  sta f3
+
+  ; move in the x direction
+  lda f0
+  ldb f2
+  add
+  sta f0
+
+  ; move in the y direction
+  lda f1
+  ldb f3
+  add
+  sta f1
+
+  ; draw the pixel
+  lda f0
+  ldb f1
+  clr
+  drw
+
+  jmp loop
+
+hlt

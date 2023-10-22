@@ -1,0 +1,52 @@
+
+jmp draw
+
+input:
+  inp
+  lib 1
+  and
+  cmp
+  jeq right
+
+  inp
+	lib 2
+  and
+  cmp
+  jeq left
+  
+  inp
+  lib 4
+  and
+  cmp
+  jeq down
+
+  inp
+  lib 8
+  and
+  cmp
+  jeq up
+
+  jmp input
+
+up:
+  mdc f1
+  jmp draw
+
+down:
+  mic f1
+  jmp draw
+
+left:
+  mdc f0
+  jmp draw
+
+right:
+  mic f0
+  jmp draw
+
+draw:
+	clr
+	lda f0
+	ldb f1
+	drw
+	jmp input
